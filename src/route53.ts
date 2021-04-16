@@ -51,8 +51,7 @@ export const create = function(
   const client = new AWS.Route53();
 
   return {
-    init: (opts: any): null => {
-      return null;
+    init: async (opts: any): Promise<void> => {
     },
     zones: async (opts: any) => {
       try {

@@ -91,14 +91,13 @@ exports.create = function (config) {
         debug: false,
         ensureSync: false
     }; }
-    var client = new AWS.Route53({
-        accessKeyId: config.AWS_ACCESS_KEY_ID,
-        secretAccessKey: config.AWS_SECRET_ACCESS_KEY
-    });
+    var client = new AWS.Route53();
     return {
-        init: function (opts) {
-            return null;
-        },
+        init: function (opts) { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/];
+            });
+        }); },
         zones: function (opts) { return __awaiter(_this, void 0, void 0, function () {
             var zones, e_3;
             return __generator(this, function (_a) {
