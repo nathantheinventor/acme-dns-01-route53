@@ -48,10 +48,7 @@ export const create = function(
     ensureSync: false
   }
 ) {
-  const client = new AWS.Route53({
-    accessKeyId: config.AWS_ACCESS_KEY_ID,
-    secretAccessKey: config.AWS_SECRET_ACCESS_KEY
-  });
+  const client = new AWS.Route53();
 
   return {
     init: (opts: any): null => {
