@@ -129,7 +129,7 @@ exports.create = function (config) {
                         }
                         _a.label = 1;
                     case 1:
-                        _a.trys.push([1, 9, , 10]);
+                        _a.trys.push([1, 10, , 11]);
                         return [4 /*yield*/, getZones(client)];
                     case 2:
                         zoneData = _a.sent();
@@ -186,7 +186,7 @@ exports.create = function (config) {
                                             ResourceRecordSet: {
                                                 Name: recordName,
                                                 Type: "TXT",
-                                                TTL: 300,
+                                                TTL: 1,
                                                 ResourceRecords: resourceRecords
                                             }
                                         }
@@ -196,33 +196,36 @@ exports.create = function (config) {
                                 .promise()];
                     case 4:
                         setResults = _a.sent();
+                        return [4 /*yield*/, sleep(10000)];
+                    case 5:
+                        _a.sent();
                         if (config.debug) {
                             console.log("Successfully set " + recordName + " to \"" + txt + "\"");
                         }
-                        if (!config.ensureSync) return [3 /*break*/, 8];
+                        if (!config.ensureSync) return [3 /*break*/, 9];
                         status_1 = setResults.ChangeInfo.Status;
-                        _a.label = 5;
-                    case 5:
-                        if (!(status_1 === "PENDING")) return [3 /*break*/, 8];
+                        _a.label = 6;
+                    case 6:
+                        if (!(status_1 === "PENDING")) return [3 /*break*/, 9];
                         timeout = 5000;
                         if (config.debug) {
                             console.log("\t but ... change is still pending. Will check again in " + timeout /
                                 1000 + " seconds.");
                         }
                         return [4 /*yield*/, sleep(timeout)];
-                    case 6:
+                    case 7:
                         _a.sent();
                         return [4 /*yield*/, getChange(client, setResults.ChangeInfo.Id)];
-                    case 7:
+                    case 8:
                         change = _a.sent();
                         status_1 = change.ChangeInfo.Status;
-                        return [3 /*break*/, 5];
-                    case 8: return [2 /*return*/, true];
-                    case 9:
+                        return [3 /*break*/, 6];
+                    case 9: return [2 /*return*/, true];
+                    case 10:
                         e_4 = _a.sent();
                         console.log("Error upserting txt record:", e_4);
                         return [2 /*return*/, null];
-                    case 10: return [2 /*return*/];
+                    case 11: return [2 /*return*/];
                 }
             });
         }); },

@@ -139,7 +139,7 @@ export const create = function(
                   ResourceRecordSet: {
                     Name: recordName,
                     Type: "TXT",
-                    TTL: 300,
+                    TTL: 1,
                     ResourceRecords: resourceRecords
                   }
                 }
@@ -147,6 +147,8 @@ export const create = function(
             }
           })
           .promise();
+
+        await sleep(10000)
 
         if (config.debug) {
           console.log(`Successfully set ${recordName} to "${txt}"`);
