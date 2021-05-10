@@ -1,6 +1,6 @@
 {
   "name": "le-challenge-route53-gh",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An ACME dns-01 challenge handler for node-letsencrypt.",
   "main": "index.js",
   "scripts": {
